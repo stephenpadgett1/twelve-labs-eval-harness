@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg
+dist/
+build/
+.env
+.env.local
+.DS_Store
+# Local video cache (do not commit binaries)
+videos/cache/
+# Per-run output (committed sample report stays in output/)
+runs/

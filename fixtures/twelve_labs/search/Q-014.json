@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-014",
+  "answer": "Top matches:\n[24.0s\u201338.0s] score=0.89 \u2014 speaker defines a graph database as 'a data store that models entities as nodes and relationships as first-class edges, optimized for traversal'\n[64.0s\u201372.0s] score=0.71 \u2014 restates the definition more loosely",
+  "notes": "Marengo marengo2.7, visual+audio (speech retrieval is the load-bearing signal here)",
+  "latency_ms": 690
+}

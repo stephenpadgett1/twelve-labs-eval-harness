@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-002",
+  "answer": "The clip shows espresso preparation in four steps: (1) a grinder is activated and ground coffee is collected; (2) the portafilter is filled and tamped flat; (3) the portafilter is locked into the espresso machine and the brew cycle is started; (4) espresso pours from the spouts into a single cup placed beneath. No milk or additional ingredients are added.",
+  "notes": "Pegasus pegasus1.2, full-video grounding",
+  "latency_ms": 1840
+}

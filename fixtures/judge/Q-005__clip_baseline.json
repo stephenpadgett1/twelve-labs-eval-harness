@@ -1,0 +1,6 @@
+{
+  "relevance": 4,
+  "faithfulness": 5,
+  "specificity": 3,
+  "rationale": "Correct moment identified but reported with a coarser timestamp granularity."
+}

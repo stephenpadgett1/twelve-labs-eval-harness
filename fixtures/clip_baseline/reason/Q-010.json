@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-010",
+  "answer": "From the sampled frames, the shooter is upright with knees slightly bent, ball held near the forehead, then arms extending toward the rim. Specifics of elbow alignment are not clearly visible at the resolution.",
+  "notes": "claude-haiku-4-5, 6 frames",
+  "latency_ms": 2060
+}

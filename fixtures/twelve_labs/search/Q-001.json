@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-001",
+  "answer": "Top matches:\n[10.8s\u201313.2s] score=0.91\n[12.4s\u201314.6s] score=0.84\n[11.0s\u201312.0s] score=0.79",
+  "notes": "Marengo marengo2.7, top-3 clips, visual+audio",
+  "latency_ms": 480
+}

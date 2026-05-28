@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-014",
+  "answer": "CLIP-only retrieval cannot directly retrieve speech content. Frames with slide text containing 'graph database' appear at 24s, 38s, and 65s \u2014 manual transcription needed to extract the definition.",
+  "notes": "ViT-B-32/openai, 1 fps; CLIP does not transcribe speech",
+  "latency_ms": 280
+}

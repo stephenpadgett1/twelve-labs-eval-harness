@@ -1,0 +1,6 @@
+{
+  "relevance": 4,
+  "faithfulness": 4,
+  "specificity": 3,
+  "rationale": "Identifies a packet but does not name it as yeast \u2014 same uncertainty, less specific framing."
+}

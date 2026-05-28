@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 4,
+  "rationale": "Specific timestamp window with an inferred real-world duration; the inference is reasonable but introduces a number not directly shown."
+}

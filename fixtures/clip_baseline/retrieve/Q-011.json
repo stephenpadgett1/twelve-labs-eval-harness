@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-011",
+  "answer": "From the sampled frames: a flat ground board pop (5s), a board rotation with the skater off it (15s), another flip (25s), a body rotation (39s). Likely four tricks total.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 250
+}

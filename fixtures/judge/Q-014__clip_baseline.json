@@ -1,0 +1,6 @@
+{
+  "relevance": 2,
+  "faithfulness": 4,
+  "specificity": 2,
+  "rationale": "Surfaces the right frames but cannot deliver the definition \u2014 a known limitation of pure CLIP."
+}

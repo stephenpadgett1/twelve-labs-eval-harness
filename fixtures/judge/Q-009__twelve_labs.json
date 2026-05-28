@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 5,
+  "rationale": "Pinpoints the miss at 18.4\u201320.9s; matches the reference window."
+}

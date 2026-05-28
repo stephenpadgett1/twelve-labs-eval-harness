@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-015",
+  "answer": "The speaker argues that many-to-many relationship traversal across multiple hops is expensive in relational tables because each hop requires a join. Graph databases store edges as first-class objects indexed for traversal, so multi-hop queries are constant-cost per step rather than join-cost.",
+  "notes": "Pegasus pegasus1.2",
+  "latency_ms": 2400
+}

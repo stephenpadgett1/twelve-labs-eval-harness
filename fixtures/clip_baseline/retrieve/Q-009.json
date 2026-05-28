@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-009",
+  "answer": "Frame at 19s shows the ball at the rim but doesn't clearly show whether it went in. Inferred miss based on no follow-on swish.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 210
+}

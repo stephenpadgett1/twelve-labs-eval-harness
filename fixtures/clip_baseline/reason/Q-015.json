@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-015",
+  "answer": "From sampled frames showing slide text about 'joins' and 'relationships,' the lecture appears to discuss query performance for relational vs graph stores. Full reasoning not recoverable from frames alone.",
+  "notes": "claude-haiku-4-5, 8 frames",
+  "latency_ms": 2330
+}

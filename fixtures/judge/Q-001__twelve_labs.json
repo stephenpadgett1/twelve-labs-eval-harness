@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 5,
+  "rationale": "Pinpoints the pour at 10.8\u201313.2s with high confidence \u2014 matches the reference and is specific to the second."
+}

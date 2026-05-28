@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 5,
+  "rationale": "Returns the exact definition with a clip range; uses both audio and visual signals as expected."
+}

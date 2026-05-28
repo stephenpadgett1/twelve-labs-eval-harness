@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-017",
+  "answer": "Based on sampled slide text mentioning 'structure', 'eval', and 'examples,' the talk seems to argue that production prompts depend on testing and design rather than phrasing.",
+  "notes": "claude-haiku-4-5, 8 frames",
+  "latency_ms": 2250
+}

@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-004",
+  "answer": "Visible stages from sampled frames: ingredients in a bowl, hands kneading dough, dough sitting covered, dough being shaped, a loaf in an oven. The proofing duration cannot be inferred from the static frame samples; one of the samples shows the same covered bowl as another, suggesting a time cut.",
+  "notes": "claude-haiku-4-5, 8 frames over 95s",
+  "latency_ms": 2920
+}

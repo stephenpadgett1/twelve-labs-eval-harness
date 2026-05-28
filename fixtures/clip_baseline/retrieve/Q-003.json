@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-003",
+  "answer": "No frames in the 1-fps sampled set show milk being added. Negative answer.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 190
+}

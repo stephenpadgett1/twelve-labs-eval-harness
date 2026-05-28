@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 5,
+  "rationale": "Counts three makes, flags the second attempt as a miss with a low score \u2014 fully matches reference."
+}

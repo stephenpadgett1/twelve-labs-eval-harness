@@ -1,0 +1,98 @@
+# Question set keyed by video id. Each video gets 3-5 questions mixing
+# retrieval ("find/where/when") and reasoning ("summarize/explain").
+#
+# `kind` is one of: retrieval | reasoning
+# `expects` is a short reference answer for the judge to compare against.
+
+questions:
+  VID-PROD-001:
+    - id: Q-001
+      kind: retrieval
+      prompt: "At what point does the espresso start pouring into the cup?"
+      expects: "Around the 11-13 second mark, after the machine is engaged."
+    - id: Q-002
+      kind: reasoning
+      prompt: "Summarize the preparation steps shown."
+      expects: "Grinder activated → portafilter filled and tamped → espresso machine engaged → coffee pours into cup."
+    - id: Q-003
+      kind: retrieval
+      prompt: "Is milk added to the coffee?"
+      expects: "No milk is added in this clip."
+
+  VID-PROD-002:
+    - id: Q-004
+      kind: reasoning
+      prompt: "What are the major stages of bread-making shown?"
+      expects: "Mixing ingredients → kneading → proofing/rising → shaping → baking."
+    - id: Q-005
+      kind: retrieval
+      prompt: "Where in the video does the dough first go into the oven?"
+      expects: "Approximately the 70-80 second mark."
+    - id: Q-006
+      kind: retrieval
+      prompt: "Is yeast visibly added as a separate ingredient?"
+      expects: "Yes, yeast is added during the mixing stage."
+    - id: Q-007
+      kind: reasoning
+      prompt: "Roughly how long does the proofing/rising stage appear to take in the video's edited timeline?"
+      expects: "A short time-compressed segment; the actual proofing is implied to be hours but is shown in seconds."
+
+  VID-SPORT-001:
+    - id: Q-008
+      kind: retrieval
+      prompt: "How many free throws are made (i.e., go through the net)?"
+      expects: "Three made; one miss."
+    - id: Q-009
+      kind: retrieval
+      prompt: "When does the only missed shot occur?"
+      expects: "On the second attempt, around the 18-20 second mark."
+    - id: Q-010
+      kind: reasoning
+      prompt: "Describe the shooter's form on the first attempt."
+      expects: "Standard set form: bent knees, elbow under the ball, follow-through with the wrist."
+
+  VID-SPORT-002:
+    - id: Q-011
+      kind: retrieval
+      prompt: "How many distinct tricks are attempted?"
+      expects: "Four: ollie, kickflip, heelflip, and a 180."
+    - id: Q-012
+      kind: retrieval
+      prompt: "Which trick is landed cleanly first?"
+      expects: "The ollie, the first attempt of the clip."
+    - id: Q-013
+      kind: reasoning
+      prompt: "Is there a progression from easier to harder tricks?"
+      expects: "Yes — starts with the ollie, escalates through kickflip and heelflip, ends on the rotational 180."
+
+  VID-LEC-001:
+    - id: Q-014
+      kind: retrieval
+      prompt: "What definition of a graph database does the speaker give?"
+      expects: "A data store that models entities as nodes and relationships as first-class edges, optimized for traversal."
+    - id: Q-015
+      kind: reasoning
+      prompt: "What problem does the speaker say graph databases solve poorly with relational tables?"
+      expects: "Many-to-many traversal of relationships across multiple hops without expensive joins."
+    - id: Q-016
+      kind: retrieval
+      prompt: "Does the speaker name any specific graph database product?"
+      expects: "Yes — Neo4j is mentioned; Neptune is referenced briefly."
+
+  VID-LEC-002:
+    - id: Q-017
+      kind: reasoning
+      prompt: "Summarize the speaker's main argument in one sentence."
+      expects: "Most production prompt-engineering value comes from structure and evaluation, not clever wording."
+    - id: Q-018
+      kind: retrieval
+      prompt: "Does the speaker mention chain-of-thought?"
+      expects: "Yes — discussed briefly as a structural technique, not a magic phrase."
+    - id: Q-019
+      kind: retrieval
+      prompt: "What does the speaker recommend as the first thing to add when adopting prompts in production?"
+      expects: "An eval set — even a small one — before iterating on the prompt itself."
+    - id: Q-020
+      kind: reasoning
+      prompt: "How does the speaker frame the role of model choice vs prompt design?"
+      expects: "Model choice sets the ceiling; prompt design is how you get close to it. Picking the right tier matters more than perfect wording."

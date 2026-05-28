@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-006",
+  "answer": "Frame at 10s shows a small packet being emptied into the bowl. Best match: 10s.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 200
+}

@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 4,
+  "rationale": "Correctly returns a negative result with confidence; explicit about the threshold."
+}

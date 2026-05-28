@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-005",
+  "answer": "Frames at 72s and 76s show dough near an oven door; 76s shows it entering. Best match: 76s.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 230
+}

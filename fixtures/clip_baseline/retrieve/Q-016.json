@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-016",
+  "answer": "Frames with the text 'Neo4j' appear at 112s and 118s; no clear frame mentions Neptune.",
+  "notes": "ViT-B-32/openai, 1 fps; no audio understanding",
+  "latency_ms": 220
+}

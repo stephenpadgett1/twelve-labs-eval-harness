@@ -1,0 +1,6 @@
+{
+  "relevance": 3,
+  "faithfulness": 4,
+  "specificity": 3,
+  "rationale": "Catches Neo4j but misses the audio-only Neptune mention."
+}

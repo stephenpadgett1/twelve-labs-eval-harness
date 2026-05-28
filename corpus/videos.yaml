@@ -1,0 +1,73 @@
+# Demo corpus for the eval harness.
+#
+# The harness is video-source-agnostic: it consumes (id, url, metadata) tuples
+# and runs both pipelines against them. The entries below describe the *kind*
+# of video each fixture in fixtures/ was generated for — three use-case shapes
+# (product demo, sports/action, lecture/explainer) at varied durations.
+#
+# To run against real videos, replace the placeholder URLs below with
+# stable, CC-licensed video URLs (e.g., Wikimedia Commons, Pexels, the
+# Blender Foundation public-domain films) and rerun. The committed fixtures
+# are *example outputs* showing the report shape, not real model responses.
+
+videos:
+  - id: VID-PROD-001
+    title: "Coffee preparation B-roll (~22s)"
+    url: "<replace-with-real-video-url>"
+    duration_s: 22
+    use_case: product_demo
+    description: |
+      Static-camera B-roll of an espresso being prepared: grinder, portafilter
+      fill + tamp, machine engagement, espresso pours into the cup. No milk
+      added. Tests fine-grained object and action retrieval at short duration.
+
+  - id: VID-PROD-002
+    title: "Bread-baking procedural (~95s)"
+    url: "<replace-with-real-video-url>"
+    duration_s: 95
+    use_case: product_demo
+    description: |
+      Multi-step procedural: mix ingredients (including visible yeast) →
+      knead → proof (time-compressed) → shape → bake. Tests step
+      segmentation and temporal reasoning over a multi-step workflow.
+
+  - id: VID-SPORT-001
+    title: "Free-throw practice clip (~35s)"
+    url: "<replace-with-real-video-url>"
+    duration_s: 35
+    use_case: sports_action
+    description: |
+      Four free-throw attempts; three made, one miss on the second attempt.
+      Tests retrieval of specific moments (the miss) and reasoning about
+      shooter form.
+
+  - id: VID-SPORT-002
+    title: "Skateboarding flat-ground tricks (~48s)"
+    url: "<replace-with-real-video-url>"
+    duration_s: 48
+    use_case: sports_action
+    description: |
+      Continuous action: ollie → kickflip → heelflip → 180. First (ollie)
+      lands clean. Tests trick identification and counting under fast motion.
+
+  - id: VID-LEC-001
+    title: "Lecture: 'What is a graph database?' (~180s)"
+    url: "<replace-with-real-video-url>"
+    duration_s: 180
+    use_case: lecture
+    description: |
+      Talking head + slides. Defines a graph database as a store of nodes +
+      first-class edges optimized for traversal. Names Neo4j and references
+      Neptune. Tests dense on-screen text + speaker content.
+
+  - id: VID-LEC-002
+    title: "Lightning talk: 'Five minutes on prompt engineering' (~300s)"
+    url: "<replace-with-real-video-url>"
+    duration_s: 300
+    use_case: lecture
+    description: |
+      Longest sample. Argues that most production prompt-engineering value
+      comes from structure and evaluation, not wording; touches on
+      chain-of-thought; recommends an eval set as the first thing to add
+      when adopting prompts in production; model choice sets the ceiling.
+      Tests retrieval over a longer corpus + summarization.

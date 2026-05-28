@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-013",
+  "answer": "From the sampled frames, the tricks appear to increase in complexity from a basic pop to flips to a rotational move, suggesting a progression.",
+  "notes": "claude-haiku-4-5, 6 frames",
+  "latency_ms": 2080
+}

@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-001",
+  "answer": "Top frames matching 'espresso pouring into cup':\n[12.0s] cosine=0.31\n[13.0s] cosine=0.28\n[11.0s] cosine=0.24",
+  "notes": "ViT-B-32/openai, 1 fps frame sampling, top-3 frames",
+  "latency_ms": 220
+}

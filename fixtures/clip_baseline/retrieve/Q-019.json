@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-019",
+  "answer": "Slide text near the end of the talk mentions 'evals first.' Best frame: 250s.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 200
+}

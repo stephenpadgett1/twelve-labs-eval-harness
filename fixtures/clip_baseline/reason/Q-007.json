@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-007",
+  "answer": "Two of the sampled frames show the same covered bowl, suggesting a time cut. Exact duration on screen is not clear from sparse frame sampling.",
+  "notes": "claude-haiku-4-5, 8 frames",
+  "latency_ms": 2150
+}

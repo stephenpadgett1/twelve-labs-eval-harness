@@ -1,0 +1,6 @@
+{
+  "relevance": 4,
+  "faithfulness": 4,
+  "specificity": 3,
+  "rationale": "Detects the time cut but cannot bound the on-screen duration."
+}

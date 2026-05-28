@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-008",
+  "answer": "Three frames clearly show ball-through-net at ~7s, ~24s, ~32s. The frame at 20s shows the rim/ball but is ambiguous; cannot confirm a make.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 240
+}

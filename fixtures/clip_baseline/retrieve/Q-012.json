@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-012",
+  "answer": "First trick attempted (and the first that appears to be ridden out): ~5s, a board pop without rotation.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 180
+}

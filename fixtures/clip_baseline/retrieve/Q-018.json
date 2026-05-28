@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-018",
+  "answer": "Frames with the on-screen text 'CoT' appear briefly around 180s.",
+  "notes": "ViT-B-32/openai, 1 fps",
+  "latency_ms": 210
+}

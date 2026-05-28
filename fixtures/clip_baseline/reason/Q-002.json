@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-002",
+  "answer": "Frames sampled at 0s, 4s, 8s, 12s, 16s, 20s suggest a coffee-making sequence with a person at a counter, a metal machine, and a final shot of a cup with dark liquid. Specific steps are inferred (grinding, filling, brewing) but the model could not always distinguish the portafilter from a tamper at the resolution available.",
+  "notes": "claude-haiku-4-5, 6 evenly-sampled frames",
+  "latency_ms": 2300
+}

@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 4,
+  "rationale": "Full step sequence with correct ordering; the 'no milk' note is correct but the step labels are slightly generic vs the reference's precise vocabulary."
+}

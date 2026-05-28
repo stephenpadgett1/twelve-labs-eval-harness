@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-020",
+  "answer": "The talk seems to argue that model choice and prompt design are complementary, with model choice as the primary lever based on frame text mentioning 'ceiling' and 'tier.'",
+  "notes": "claude-haiku-4-5, 8 frames",
+  "latency_ms": 2210
+}

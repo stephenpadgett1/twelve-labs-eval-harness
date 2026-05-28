@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 5,
+  "rationale": "Clip range 74\u201376.5s aligns with the reference window of 70\u201380s, with sub-second precision."
+}
