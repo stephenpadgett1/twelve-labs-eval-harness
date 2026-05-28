@@ -3,13 +3,14 @@ serialize cleanly and the report writer can rely on shape."""
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
 UseCase = Literal["product_demo", "sports_action", "lecture"]
-QuestionKind = Literal["retrieval", "reasoning"]
+QuestionKind = Literal["retrieval", "reasoning", "structured"]
 Pipeline = Literal["twelve_labs", "clip_baseline"]
+Ablation = Literal["none", "visual_only"]
 
 
 class Video(BaseModel):
@@ -27,6 +28,12 @@ class Question(BaseModel):
     kind: QuestionKind
     prompt: str
     expects: str
+    # Only populated for `structured` questions — the JSON schema Pegasus 1.5
+    # Time-Based Metadata extraction will produce against. Left as a plain dict
+    # so the YAML stays declarative.
+    schema_: dict[str, Any] | None = Field(default=None, alias="schema")
+
+    model_config = {"populate_by_name": True}
 
 
 class ModelResponse(BaseModel):
@@ -37,6 +44,11 @@ class ModelResponse(BaseModel):
     citations: list[str] = Field(default_factory=list)
     latency_ms: int | None = None
     notes: str | None = None
+    # Illustrative cost-per-call estimate, USD. Derived from posted pricing
+    # pages (TwelveLabs $0.042/min index + $0.0292/min Pegasus analyze;
+    # Anthropic Haiku 4.5 input/output rates) and clearly marked as illustrative
+    # — see README "Cost estimates" section.
+    cost_usd: float | None = None
 
 
 class JudgeScore(BaseModel):
@@ -69,6 +81,7 @@ class EvalReport(BaseModel):
     n_questions: int
     results: list[QuestionResult]
     notes: list[str] = Field(default_factory=list)
+    ablation: Ablation = "none"
 
     def rollup(self, pipeline: Pipeline) -> dict[str, float]:
         if not self.results:
@@ -100,4 +113,18 @@ class EvalReport(BaseModel):
             "specificity": round(sum(s.specificity for s in relevant) / n, 2),
             "overall": round(sum(s.overall for s in relevant) / n, 2),
             "n": n,
+        }
+
+    def cost_rollup(self, pipeline: Pipeline) -> dict[str, float]:
+        responses = [
+            (r.twelve_labs if pipeline == "twelve_labs" else r.clip_baseline)
+            for r in self.results
+        ]
+        per_call = [r.cost_usd or 0.0 for r in responses]
+        n = len([c for c in per_call if c > 0])
+        total = sum(per_call)
+        return {
+            "total": round(total, 4),
+            "per_question_avg": round(total / n, 4) if n else 0.0,
+            "n_priced": float(n),
         }

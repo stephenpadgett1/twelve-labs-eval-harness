@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-023",
+  "answer": "{\n  \"tricks\": [\n    {\n      \"name\": \"ollie\",\n      \"outcome\": \"landed\",\n      \"start_s\": 3,\n      \"end_s\": 7\n    },\n    {\n      \"name\": \"flip trick\",\n      \"outcome\": \"uncertain\",\n      \"start_s\": 14,\n      \"end_s\": 19\n    },\n    {\n      \"name\": \"flip trick\",\n      \"outcome\": \"landed\",\n      \"start_s\": 24,\n      \"end_s\": 29\n    },\n    {\n      \"name\": \"spin\",\n      \"outcome\": \"landed\",\n      \"start_s\": 38,\n      \"end_s\": 42\n    }\n  ]\n}",
+  "notes": "claude-haiku-4-5, 6 frames, schema-mode",
+  "latency_ms": 2470
+}

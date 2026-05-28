@@ -1,0 +1,6 @@
+{
+  "relevance": 2,
+  "faithfulness": 3,
+  "specificity": 2,
+  "rationale": "Visual-only retrieval finds the topic slide but not the spoken definition \u2014 the answer is the definition, and the model can't surface it without audio."
+}

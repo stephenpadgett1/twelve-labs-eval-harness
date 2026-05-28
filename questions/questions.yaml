@@ -1,8 +1,11 @@
 # Question set keyed by video id. Each video gets 3-5 questions mixing
-# retrieval ("find/where/when") and reasoning ("summarize/explain").
+# retrieval ("find/where/when"), reasoning ("summarize/explain"), and
+# structured ("extract timestamped JSON conforming to a schema" — Pegasus 1.5
+# Time-Based Metadata).
 #
-# `kind` is one of: retrieval | reasoning
+# `kind` is one of: retrieval | reasoning | structured
 # `expects` is a short reference answer for the judge to compare against.
+# `schema` (structured only) is the JSON schema Pegasus 1.5 extracts against.
 
 questions:
   VID-PROD-001:
@@ -36,6 +39,23 @@ questions:
       kind: reasoning
       prompt: "Roughly how long does the proofing/rising stage appear to take in the video's edited timeline?"
       expects: "A short time-compressed segment; the actual proofing is implied to be hours but is shown in seconds."
+    - id: Q-021
+      kind: structured
+      prompt: "Extract each bread-making stage as a timestamped event."
+      expects: "Five stages: mixing (~0–15s), kneading (~15–40s), proofing/rising (~40–55s), shaping (~55–70s), baking (~70–180s)."
+      schema:
+        type: object
+        properties:
+          stages:
+            type: array
+            items:
+              type: object
+              properties:
+                name: { type: string }
+                start_s: { type: number }
+                end_s: { type: number }
+              required: [name, start_s, end_s]
+        required: [stages]
 
   VID-SPORT-001:
     - id: Q-008
@@ -50,6 +70,24 @@ questions:
       kind: reasoning
       prompt: "Describe the shooter's form on the first attempt."
       expects: "Standard set form: bent knees, elbow under the ball, follow-through with the wrist."
+    - id: Q-022
+      kind: structured
+      prompt: "For each free-throw attempt, extract its index, outcome, and time range."
+      expects: "Four attempts: 1=made (~0–6s), 2=miss (~16–22s), 3=made (~26–32s), 4=made (~38–44s)."
+      schema:
+        type: object
+        properties:
+          attempts:
+            type: array
+            items:
+              type: object
+              properties:
+                index: { type: integer }
+                outcome: { type: string, enum: [made, miss] }
+                start_s: { type: number }
+                end_s: { type: number }
+              required: [index, outcome, start_s, end_s]
+        required: [attempts]
 
   VID-SPORT-002:
     - id: Q-011
@@ -64,6 +102,24 @@ questions:
       kind: reasoning
       prompt: "Is there a progression from easier to harder tricks?"
       expects: "Yes — starts with the ollie, escalates through kickflip and heelflip, ends on the rotational 180."
+    - id: Q-023
+      kind: structured
+      prompt: "Extract each trick as a timestamped event including trick name, outcome (landed/bailed), and time range."
+      expects: "Four tricks: ollie (landed, ~3–6s), kickflip (bailed, ~14–18s), heelflip (landed, ~24–28s), 180 (landed, ~38–41s)."
+      schema:
+        type: object
+        properties:
+          tricks:
+            type: array
+            items:
+              type: object
+              properties:
+                name: { type: string }
+                outcome: { type: string, enum: [landed, bailed] }
+                start_s: { type: number }
+                end_s: { type: number }
+              required: [name, outcome, start_s, end_s]
+        required: [tricks]
 
   VID-LEC-001:
     - id: Q-014
@@ -78,6 +134,26 @@ questions:
       kind: retrieval
       prompt: "Does the speaker name any specific graph database product?"
       expects: "Yes — Neo4j is mentioned; Neptune is referenced briefly."
+    - id: Q-024
+      kind: structured
+      prompt: "Extract section markers for the lecture: each section's title and time range."
+      expects: "Three sections: Definition (~0–30s), Why-relational-fails (~30–95s), Products mentioned (~95–150s)."
+      schema:
+        type: object
+        properties:
+          sections:
+            type: array
+            items:
+              type: object
+              properties:
+                title: { type: string }
+                start_s: { type: number }
+                end_s: { type: number }
+                key_terms:
+                  type: array
+                  items: { type: string }
+              required: [title, start_s, end_s]
+        required: [sections]
 
   VID-LEC-002:
     - id: Q-017

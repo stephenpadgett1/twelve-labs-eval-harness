@@ -1,0 +1,6 @@
+{
+  "relevance": 3,
+  "faithfulness": 3,
+  "specificity": 2,
+  "rationale": "Right count and rough timing, but Claude can't disambiguate kickflip vs heelflip from 6 sampled frames \u2014 collapses to 'flip trick.'"
+}

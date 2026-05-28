@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-021",
+  "answer": "{\n  \"stages\": [\n    {\n      \"name\": \"mixing\",\n      \"start_s\": 0.0,\n      \"end_s\": 14.6\n    },\n    {\n      \"name\": \"kneading\",\n      \"start_s\": 14.6,\n      \"end_s\": 39.8\n    },\n    {\n      \"name\": \"proofing\",\n      \"start_s\": 39.8,\n      \"end_s\": 54.0\n    },\n    {\n      \"name\": \"shaping\",\n      \"start_s\": 54.0,\n      \"end_s\": 70.2\n    },\n    {\n      \"name\": \"baking\",\n      \"start_s\": 70.2,\n      \"end_s\": 178.4\n    }\n  ]\n}",
+  "notes": "Pegasus pegasus1.5 (Time-Based Metadata)",
+  "latency_ms": 2680
+}

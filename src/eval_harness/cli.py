@@ -12,6 +12,7 @@ from .clients.twelve_labs import TwelveLabsClient
 from .corpus import load_questions, load_videos
 from .report import render
 from .runner import run_eval
+from .types import Ablation
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -36,12 +37,27 @@ ROOT = Path(__file__).resolve().parents[2]
     show_default=True,
 )
 @click.option("--corpus-id", default="demo", show_default=True)
-def main(videos_file: Path, questions_file: Path, output: Path, corpus_id: str) -> None:
+@click.option(
+    "--ablation",
+    type=click.Choice(["none", "visual_only"]),
+    default="none",
+    show_default=True,
+    help="Modality ablation. visual_only disables audio for Marengo so you can "
+    "measure the audio delta on speech-heavy queries.",
+)
+def main(
+    videos_file: Path,
+    questions_file: Path,
+    output: Path,
+    corpus_id: str,
+    ablation: str,
+) -> None:
     """Run the eval and write a side-by-side markdown report."""
     videos = load_videos(videos_file)
     questions = load_questions(questions_file, videos)
 
-    twelve_labs = TwelveLabsClient()
+    audio_enabled = ablation == "none"
+    twelve_labs = TwelveLabsClient(audio_enabled=audio_enabled)
     clip_baseline = ClipBaselineClient()
     judge = Judge()
 
@@ -52,6 +68,7 @@ def main(videos_file: Path, questions_file: Path, output: Path, corpus_id: str) 
         clip_baseline=clip_baseline,
         judge=judge,
         corpus_id=corpus_id,
+        ablation=ablation,  # type: ignore[arg-type]
     )
 
     output.parent.mkdir(parents=True, exist_ok=True)

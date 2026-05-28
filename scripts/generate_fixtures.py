@@ -423,21 +423,210 @@ DATA: list[dict] = [
         "judge_tl": (5, 5, 4, "Full reasoning with the ceiling analogy and cost implication; the cost-tradeoff sentence is the model's framing, not a verbatim quote."),
         "judge_cb": (3, 4, 2, "Right framing, missing the cost dimension."),
     },
+    # ---- Structured (Pegasus 1.5 Time-Based Metadata) ----
+    # These four exercise the Pegasus 1.5 TBM path — define a JSON schema,
+    # get timestamped structured output. The pedagogical point is that
+    # Pegasus produces video-native temporal boundaries; frame-sampled
+    # Claude produces schema-conforming JSON but with weaker timestamps.
+    {
+        "qid": "Q-021",
+        "kind": "structured",
+        "tl_answer": json.dumps(
+            {
+                "stages": [
+                    {"name": "mixing", "start_s": 0.0, "end_s": 14.6},
+                    {"name": "kneading", "start_s": 14.6, "end_s": 39.8},
+                    {"name": "proofing", "start_s": 39.8, "end_s": 54.0},
+                    {"name": "shaping", "start_s": 54.0, "end_s": 70.2},
+                    {"name": "baking", "start_s": 70.2, "end_s": 178.4},
+                ]
+            },
+            indent=2,
+        ),
+        "tl_notes": "Pegasus pegasus1.5 (Time-Based Metadata)",
+        "tl_latency_ms": 2680,
+        "cb_answer": json.dumps(
+            {
+                "stages": [
+                    {"name": "mixing", "start_s": 0, "end_s": 30},
+                    {"name": "kneading", "start_s": 30, "end_s": 50},
+                    {"name": "rising", "start_s": 50, "end_s": 90},
+                    {"name": "baking", "start_s": 90, "end_s": 180},
+                ]
+            },
+            indent=2,
+        ),
+        "cb_notes": "claude-haiku-4-5, 6 frames, schema-mode",
+        "cb_latency_ms": 2740,
+        "judge_tl": (5, 5, 5, "Five stages with sub-second boundaries — matches the reference and produces the schema-required fields exactly."),
+        "judge_cb": (4, 4, 3, "Right shape, but only 4 stages (drops shaping) and timestamps are coarse 10-second buckets from sparse frame sampling."),
+    },
+    {
+        "qid": "Q-022",
+        "kind": "structured",
+        "tl_answer": json.dumps(
+            {
+                "attempts": [
+                    {"index": 1, "outcome": "made", "start_s": 0.4, "end_s": 5.8},
+                    {"index": 2, "outcome": "miss", "start_s": 16.2, "end_s": 21.6},
+                    {"index": 3, "outcome": "made", "start_s": 26.0, "end_s": 31.4},
+                    {"index": 4, "outcome": "made", "start_s": 38.8, "end_s": 44.0},
+                ]
+            },
+            indent=2,
+        ),
+        "tl_notes": "Pegasus pegasus1.5 (Time-Based Metadata)",
+        "tl_latency_ms": 2310,
+        "cb_answer": json.dumps(
+            {
+                "attempts": [
+                    {"index": 1, "outcome": "made", "start_s": 0, "end_s": 10},
+                    {"index": 2, "outcome": "miss", "start_s": 15, "end_s": 25},
+                    {"index": 3, "outcome": "made", "start_s": 25, "end_s": 35},
+                    {"index": 4, "outcome": "made", "start_s": 35, "end_s": 45},
+                ]
+            },
+            indent=2,
+        ),
+        "cb_notes": "claude-haiku-4-5, 6 frames, schema-mode",
+        "cb_latency_ms": 2210,
+        "judge_tl": (5, 5, 5, "All four attempts with correct outcome and sub-second boundaries."),
+        "judge_cb": (4, 4, 3, "Outcomes correct, but time ranges are 5-second buckets that overlap unrealistically."),
+    },
+    {
+        "qid": "Q-023",
+        "kind": "structured",
+        "tl_answer": json.dumps(
+            {
+                "tricks": [
+                    {"name": "ollie", "outcome": "landed", "start_s": 3.2, "end_s": 5.8},
+                    {"name": "kickflip", "outcome": "bailed", "start_s": 13.6, "end_s": 18.4},
+                    {"name": "heelflip", "outcome": "landed", "start_s": 23.8, "end_s": 28.1},
+                    {"name": "180", "outcome": "landed", "start_s": 38.4, "end_s": 41.2},
+                ]
+            },
+            indent=2,
+        ),
+        "tl_notes": "Pegasus pegasus1.5 (Time-Based Metadata)",
+        "tl_latency_ms": 2540,
+        "cb_answer": json.dumps(
+            {
+                "tricks": [
+                    {"name": "ollie", "outcome": "landed", "start_s": 3, "end_s": 7},
+                    {"name": "flip trick", "outcome": "uncertain", "start_s": 14, "end_s": 19},
+                    {"name": "flip trick", "outcome": "landed", "start_s": 24, "end_s": 29},
+                    {"name": "spin", "outcome": "landed", "start_s": 38, "end_s": 42},
+                ]
+            },
+            indent=2,
+        ),
+        "cb_notes": "claude-haiku-4-5, 6 frames, schema-mode",
+        "cb_latency_ms": 2470,
+        "judge_tl": (5, 5, 5, "All four tricks named specifically with correct outcomes and tight boundaries."),
+        "judge_cb": (3, 3, 2, "Right count and rough timing, but Claude can't disambiguate kickflip vs heelflip from 6 sampled frames — collapses to 'flip trick.'"),
+    },
+    {
+        "qid": "Q-024",
+        "kind": "structured",
+        "tl_answer": json.dumps(
+            {
+                "sections": [
+                    {"title": "Definition", "start_s": 0.0, "end_s": 31.6, "key_terms": ["graph database", "nodes", "edges", "traversal"]},
+                    {"title": "Why relational fails for multi-hop", "start_s": 31.6, "end_s": 95.4, "key_terms": ["joins", "many-to-many", "traversal cost"]},
+                    {"title": "Products", "start_s": 95.4, "end_s": 150.2, "key_terms": ["Neo4j", "Neptune"]},
+                ]
+            },
+            indent=2,
+        ),
+        "tl_notes": "Pegasus pegasus1.5 (Time-Based Metadata)",
+        "tl_latency_ms": 2870,
+        "cb_answer": json.dumps(
+            {
+                "sections": [
+                    {"title": "Intro", "start_s": 0, "end_s": 60, "key_terms": ["graph"]},
+                    {"title": "Examples", "start_s": 60, "end_s": 150, "key_terms": ["Neo4j"]},
+                ]
+            },
+            indent=2,
+        ),
+        "cb_notes": "claude-haiku-4-5, 6 frames, schema-mode (no audio)",
+        "cb_latency_ms": 2620,
+        "judge_tl": (5, 5, 5, "Three sections with audio-grounded boundaries and rich key-term extraction; matches the reference."),
+        "judge_cb": (3, 3, 2, "Section count wrong (2 vs 3), generic titles, and Neptune missed entirely — frame-sampled vision has no audio handle."),
+    },
 ]
+
+
+# ----------------------------------------------------------------------
+# Visual-only ablation overrides
+# ----------------------------------------------------------------------
+# For audio-heavy retrieval questions (the lectures Q-014..Q-019), the
+# visual-only Marengo run loses the speech signal entirely. These overrides
+# generate `fixtures/twelve_labs/search_visual_only/Q-XXX.json` plus a
+# `Q-XXX__twelve_labs__visual_only.json` judge fixture so the rollup reflects
+# the actual audio contribution.
+VISUAL_ONLY_OVERRIDES: dict[str, dict] = {
+    "Q-014": {
+        "tl_answer": (
+            "No high-confidence visual matches for a verbal definition. "
+            "Best frame: [12.0s] score=0.41 — a slide titled 'Graph databases' "
+            "but no definition text is visible."
+        ),
+        "tl_notes": "Marengo marengo3.0, visual-only (ablation) — speech signal lost",
+        "tl_latency_ms": 510,
+        "judge_tl": (2, 3, 2, "Visual-only retrieval finds the topic slide but not the spoken definition — the answer is the definition, and the model can't surface it without audio."),
+    },
+    "Q-016": {
+        "tl_answer": (
+            "Top matches:\n"
+            "[112.0s–115.0s] score=0.66 — slide with 'Neo4j' label visible"
+        ),
+        "tl_notes": "Marengo marengo3.0, visual-only (ablation) — Neptune (audio-only mention) lost",
+        "tl_latency_ms": 540,
+        "judge_tl": (3, 4, 3, "Catches Neo4j via slide OCR but completely misses Neptune which was named only in speech."),
+    },
+    "Q-018": {
+        "tl_answer": "No high-confidence matches. Slide overlay 'CoT' appears briefly around 180s but no surrounding context.",
+        "tl_notes": "Marengo marengo3.0, visual-only (ablation) — speaker's verbal discussion lost",
+        "tl_latency_ms": 480,
+        "judge_tl": (2, 3, 2, "Confirms presence via a passing slide marker but loses the speaker's actual framing of chain-of-thought as a structural technique."),
+    },
+    "Q-019": {
+        "tl_answer": "Slide near the end reads 'Evals first.' No surrounding context available without audio.",
+        "tl_notes": "Marengo marengo3.0, visual-only (ablation) — speaker's recommendation lost",
+        "tl_latency_ms": 460,
+        "judge_tl": (3, 4, 2, "Right answer per slide text, but the speaker's '5-10 fixtures' qualifier was audio-only."),
+    },
+}
 
 
 def write_fixtures() -> None:
     (FIX / "twelve_labs" / "search").mkdir(parents=True, exist_ok=True)
     (FIX / "twelve_labs" / "generate").mkdir(parents=True, exist_ok=True)
+    (FIX / "twelve_labs" / "structured").mkdir(parents=True, exist_ok=True)
+    (FIX / "twelve_labs" / "search_visual_only").mkdir(parents=True, exist_ok=True)
     (FIX / "clip_baseline" / "retrieve").mkdir(parents=True, exist_ok=True)
     (FIX / "clip_baseline" / "reason").mkdir(parents=True, exist_ok=True)
+    (FIX / "clip_baseline" / "structured").mkdir(parents=True, exist_ok=True)
     (FIX / "judge").mkdir(parents=True, exist_ok=True)
 
+    tl_subdir_for_kind = {
+        "retrieval": "search",
+        "reasoning": "generate",
+        "structured": "structured",
+    }
+    cb_subdir_for_kind = {
+        "retrieval": "retrieve",
+        "reasoning": "reason",
+        "structured": "structured",
+    }
+
+    n_written = 0
     for entry in DATA:
         qid = entry["qid"]
         kind = entry["kind"]
-        tl_subdir = "search" if kind == "retrieval" else "generate"
-        cb_subdir = "retrieve" if kind == "retrieval" else "reason"
+        tl_subdir = tl_subdir_for_kind[kind]
+        cb_subdir = cb_subdir_for_kind[kind]
 
         # Twelve Labs response
         (FIX / "twelve_labs" / tl_subdir / f"{qid}.json").write_text(
@@ -451,6 +640,7 @@ def write_fixtures() -> None:
                 indent=2,
             )
         )
+        n_written += 1
 
         # CLIP baseline response
         (FIX / "clip_baseline" / cb_subdir / f"{qid}.json").write_text(
@@ -464,6 +654,7 @@ def write_fixtures() -> None:
                 indent=2,
             )
         )
+        n_written += 1
 
         # Judge scores
         rel, faith, spec, rat = entry["judge_tl"]
@@ -473,6 +664,7 @@ def write_fixtures() -> None:
                 indent=2,
             )
         )
+        n_written += 1
         rel, faith, spec, rat = entry["judge_cb"]
         (FIX / "judge" / f"{qid}__clip_baseline.json").write_text(
             json.dumps(
@@ -480,8 +672,31 @@ def write_fixtures() -> None:
                 indent=2,
             )
         )
+        n_written += 1
 
-    print(f"wrote {len(DATA) * 6} fixture files under {FIX}")
+    # Visual-only ablation fixtures (Marengo search + matched judge variant).
+    for qid, override in VISUAL_ONLY_OVERRIDES.items():
+        (FIX / "twelve_labs" / "search_visual_only" / f"{qid}.json").write_text(
+            json.dumps(
+                {
+                    "question_id": qid,
+                    "answer": override["tl_answer"],
+                    "notes": override["tl_notes"],
+                    "latency_ms": override["tl_latency_ms"],
+                },
+                indent=2,
+            )
+        )
+        rel, faith, spec, rat = override["judge_tl"]
+        (FIX / "judge" / f"{qid}__twelve_labs__visual_only.json").write_text(
+            json.dumps(
+                {"relevance": rel, "faithfulness": faith, "specificity": spec, "rationale": rat},
+                indent=2,
+            )
+        )
+        n_written += 2
+
+    print(f"wrote {n_written} fixture files under {FIX}")
 
 
 if __name__ == "__main__":

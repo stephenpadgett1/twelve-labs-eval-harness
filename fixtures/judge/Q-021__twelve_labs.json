@@ -1,0 +1,6 @@
+{
+  "relevance": 5,
+  "faithfulness": 5,
+  "specificity": 5,
+  "rationale": "Five stages with sub-second boundaries \u2014 matches the reference and produces the schema-required fields exactly."
+}

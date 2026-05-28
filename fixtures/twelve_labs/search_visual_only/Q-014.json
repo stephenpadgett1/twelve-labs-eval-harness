@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-014",
+  "answer": "No high-confidence visual matches for a verbal definition. Best frame: [12.0s] score=0.41 \u2014 a slide titled 'Graph databases' but no definition text is visible.",
+  "notes": "Marengo marengo3.0, visual-only (ablation) \u2014 speech signal lost",
+  "latency_ms": 510
+}

@@ -1,26 +1,27 @@
 # Video-Understanding Eval — Side-by-Side Report
 
-Corpus: **demo** · 6 videos · 24 questions · ablation: **none**
+Corpus: **demo** · 6 videos · 24 questions · ablation: **visual_only**
 
 > **Run notes:**
 > - twelve_labs ran in fixture mode (no TWELVE_LABS_API_KEY set). Responses are pre-recorded illustrative shapes, not live model output.
 > - clip_baseline ran in fixture mode (no ANTHROPIC_API_KEY for the multimodal call). Responses are pre-recorded illustrative shapes.
 > - judge ran in fixture mode (no ANTHROPIC_API_KEY). Scores are pre-recorded against the fixture responses, not live judge calls.
+> - Audio modality ablation active: Marengo runs visual-only. Run the default mode (no --ablation flag) to see the audio delta — the speech-heavy lectures degrade most.
 
 ## Rollup
 
 | Metric | Twelve Labs (Marengo + Pegasus) | CLIP baseline + Claude reasoning |
 |---|---:|---:|
-| Relevance | 5.00 | 3.71 |
-| Faithfulness | 4.92 | 4.04 |
-| Specificity | 4.71 | 2.75 |
-| Overall | 4.88 | 3.50 |
+| Relevance | 4.58 | 3.71 |
+| Faithfulness | 4.67 | 4.04 |
+| Specificity | 4.29 | 2.75 |
+| Overall | 4.51 | 3.50 |
 
 ### By question kind
 
 | Kind | Pipeline | n | Relevance | Faithfulness | Specificity | Overall |
 |---|---|---:|---:|---:|---:|---:|
-| retrieval | Twelve Labs | 12 | 5.00 | 4.92 | 4.75 | 4.89 |
+| retrieval | Twelve Labs | 12 | 4.17 | 4.42 | 3.92 | 4.17 |
 | retrieval | CLIP baseline | 12 | 3.75 | 4.17 | 2.83 | 3.59 |
 | reasoning | Twelve Labs | 8 | 5.00 | 4.88 | 4.50 | 4.79 |
 | reasoning | CLIP baseline | 8 | 3.75 | 4.12 | 2.75 | 3.54 |
@@ -692,14 +693,12 @@ _notes: claude-haiku-4-5, 6 frames, schema-mode_
 
 **Expected.** A data store that models entities as nodes and relationships as first-class edges, optimized for traversal.
 
-**Twelve Labs** (relevance 5/5 · faithfulness 5/5 · specificity 5/5 · 690 ms · $0.0126)
+**Twelve Labs** (relevance 2/5 · faithfulness 3/5 · specificity 2/5 · 510 ms · $0.0126)
 
-Top matches:
-[24.0s–38.0s] score=0.89 — speaker defines a graph database as 'a data store that models entities as nodes and relationships as first-class edges, optimized for traversal'
-[64.0s–72.0s] score=0.71 — restates the definition more loosely
+No high-confidence visual matches for a verbal definition. Best frame: [12.0s] score=0.41 — a slide titled 'Graph databases' but no definition text is visible.
 
-_judge:_ Returns the exact definition with a clip range; uses both audio and visual signals as expected.
-_notes: Marengo marengo3.0, visual+audio (speech retrieval is the load-bearing signal here)_
+_judge:_ Visual-only retrieval finds the topic slide but not the spoken definition — the answer is the definition, and the model can't surface it without audio.
+_notes: Marengo marengo3.0, visual-only (ablation) — speech signal lost_
 
 **CLIP baseline** (relevance 2/5 · faithfulness 4/5 · specificity 2/5 · 280 ms · $0.0000)
 
@@ -738,14 +737,13 @@ _notes: claude-haiku-4-5, 8 frames_
 
 **Expected.** Yes — Neo4j is mentioned; Neptune is referenced briefly.
 
-**Twelve Labs** (relevance 5/5 · faithfulness 5/5 · specificity 5/5 · 510 ms · $0.0126)
+**Twelve Labs** (relevance 3/5 · faithfulness 4/5 · specificity 3/5 · 540 ms · $0.0126)
 
 Top matches:
-[112.0s–119.0s] score=0.88 — 'Neo4j' named
-[141.0s–144.0s] score=0.74 — 'Neptune' referenced briefly
+[112.0s–115.0s] score=0.66 — slide with 'Neo4j' label visible
 
-_judge:_ Both products named with timestamps; matches reference exactly.
-_notes: Marengo marengo3.0, audio+visual_
+_judge:_ Catches Neo4j via slide OCR but completely misses Neptune which was named only in speech.
+_notes: Marengo marengo3.0, visual-only (ablation) — Neptune (audio-only mention) lost_
 
 **CLIP baseline** (relevance 3/5 · faithfulness 4/5 · specificity 3/5 · 220 ms · $0.0000)
 
@@ -898,13 +896,12 @@ _notes: claude-haiku-4-5, 8 frames_
 
 **Expected.** Yes — discussed briefly as a structural technique, not a magic phrase.
 
-**Twelve Labs** (relevance 5/5 · faithfulness 5/5 · specificity 4/5 · 530 ms · $0.0210)
+**Twelve Labs** (relevance 2/5 · faithfulness 3/5 · specificity 2/5 · 480 ms · $0.0210)
 
-Top matches:
-[178.0s–192.0s] score=0.84 — 'chain-of-thought' discussed briefly as a structural technique, with explicit pushback against treating it as a magic phrase
+No high-confidence matches. Slide overlay 'CoT' appears briefly around 180s but no surrounding context.
 
-_judge:_ Yes with full context and explicit framing; very lightly extrapolated from a brief mention.
-_notes: Marengo marengo3.0, audio+visual_
+_judge:_ Confirms presence via a passing slide marker but loses the speaker's actual framing of chain-of-thought as a structural technique.
+_notes: Marengo marengo3.0, visual-only (ablation) — speaker's verbal discussion lost_
 
 **CLIP baseline** (relevance 3/5 · faithfulness 4/5 · specificity 2/5 · 210 ms · $0.0000)
 
@@ -921,12 +918,12 @@ _notes: ViT-B-32/openai, 1 fps_
 
 **Expected.** An eval set — even a small one — before iterating on the prompt itself.
 
-**Twelve Labs** (relevance 5/5 · faithfulness 5/5 · specificity 5/5 · 500 ms · $0.0210)
+**Twelve Labs** (relevance 3/5 · faithfulness 4/5 · specificity 2/5 · 460 ms · $0.0210)
 
-Top match: [245.0s–266.0s] score=0.91 — speaker recommends adding an eval set first, even a small one (5-10 fixtures), before iterating on the prompt itself
+Slide near the end reads 'Evals first.' No surrounding context available without audio.
 
-_judge:_ Names the recommendation and includes the speaker's '5-10 fixtures' qualifier.
-_notes: Marengo marengo3.0_
+_judge:_ Right answer per slide text, but the speaker's '5-10 fixtures' qualifier was audio-only.
+_notes: Marengo marengo3.0, visual-only (ablation) — speaker's recommendation lost_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 200 ms · $0.0000)
 

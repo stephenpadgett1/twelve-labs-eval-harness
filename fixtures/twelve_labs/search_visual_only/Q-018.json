@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-018",
+  "answer": "No high-confidence matches. Slide overlay 'CoT' appears briefly around 180s but no surrounding context.",
+  "notes": "Marengo marengo3.0, visual-only (ablation) \u2014 speaker's verbal discussion lost",
+  "latency_ms": 480
+}

@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-022",
+  "answer": "{\n  \"attempts\": [\n    {\n      \"index\": 1,\n      \"outcome\": \"made\",\n      \"start_s\": 0,\n      \"end_s\": 10\n    },\n    {\n      \"index\": 2,\n      \"outcome\": \"miss\",\n      \"start_s\": 15,\n      \"end_s\": 25\n    },\n    {\n      \"index\": 3,\n      \"outcome\": \"made\",\n      \"start_s\": 25,\n      \"end_s\": 35\n    },\n    {\n      \"index\": 4,\n      \"outcome\": \"made\",\n      \"start_s\": 35,\n      \"end_s\": 45\n    }\n  ]\n}",
+  "notes": "claude-haiku-4-5, 6 frames, schema-mode",
+  "latency_ms": 2210
+}

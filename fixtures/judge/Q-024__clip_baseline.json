@@ -1,0 +1,6 @@
+{
+  "relevance": 3,
+  "faithfulness": 3,
+  "specificity": 2,
+  "rationale": "Section count wrong (2 vs 3), generic titles, and Neptune missed entirely \u2014 frame-sampled vision has no audio handle."
+}

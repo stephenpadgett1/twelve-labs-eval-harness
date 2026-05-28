@@ -1,0 +1,6 @@
+{
+  "relevance": 3,
+  "faithfulness": 4,
+  "specificity": 3,
+  "rationale": "Catches Neo4j via slide OCR but completely misses Neptune which was named only in speech."
+}

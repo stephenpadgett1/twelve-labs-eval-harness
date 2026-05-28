@@ -9,7 +9,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from .clients.clip_baseline import ClipBaselineClient
 from .clients.judge import Judge
 from .clients.twelve_labs import TwelveLabsClient
-from .types import EvalReport, ModelResponse, Question, QuestionResult, Video
+from .types import Ablation, EvalReport, ModelResponse, Question, QuestionResult, Video
 
 console = Console()
 
@@ -22,6 +22,7 @@ def run_eval(
     clip_baseline: ClipBaselineClient,
     judge: Judge,
     corpus_id: str = "demo",
+    ablation: Ablation = "none",
 ) -> EvalReport:
     videos_by_id = {v.id: v for v in videos}
     results: list[QuestionResult] = []
@@ -32,7 +33,8 @@ def run_eval(
     console.print(
         f"  twelve_labs: [cyan]{twelve_labs.mode}[/]  "
         f"clip_baseline: [cyan]{clip_baseline.mode}[/]  "
-        f"judge: [cyan]{judge.mode}[/]"
+        f"judge: [cyan]{judge.mode}[/]  "
+        f"ablation: [cyan]{ablation}[/]"
     )
 
     with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}")) as progress:
@@ -64,7 +66,8 @@ def run_eval(
         n_videos=len(videos),
         n_questions=len(questions),
         results=results,
-        notes=_run_notes(twelve_labs, clip_baseline, judge),
+        notes=_run_notes(twelve_labs, clip_baseline, judge, ablation),
+        ablation=ablation,
     )
     return report
 
@@ -74,6 +77,8 @@ def _twelve_labs_for(
 ) -> ModelResponse:
     if question.kind == "retrieval":
         return client.search(video, question)
+    if question.kind == "structured":
+        return client.extract_structured(video, question)
     return client.generate(video, question)
 
 
@@ -82,6 +87,8 @@ def _baseline_for(
 ) -> ModelResponse:
     if question.kind == "retrieval":
         return client.retrieve(video, question)
+    if question.kind == "structured":
+        return client.extract_structured(video, question)
     return client.reason(video, question)
 
 
@@ -89,6 +96,7 @@ def _run_notes(
     twelve_labs: TwelveLabsClient,
     clip_baseline: ClipBaselineClient,
     judge: Judge,
+    ablation: Ablation,
 ) -> list[str]:
     notes: list[str] = []
     if twelve_labs.mode == "fixtures":
@@ -105,5 +113,11 @@ def _run_notes(
         notes.append(
             "judge ran in fixture mode (no ANTHROPIC_API_KEY). "
             "Scores are pre-recorded against the fixture responses, not live judge calls."
+        )
+    if ablation == "visual_only":
+        notes.append(
+            "Audio modality ablation active: Marengo runs visual-only. "
+            "Run the default mode (no --ablation flag) to see the audio delta — "
+            "the speech-heavy lectures degrade most."
         )
     return notes

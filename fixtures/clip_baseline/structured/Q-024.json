@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-024",
+  "answer": "{\n  \"sections\": [\n    {\n      \"title\": \"Intro\",\n      \"start_s\": 0,\n      \"end_s\": 60,\n      \"key_terms\": [\n        \"graph\"\n      ]\n    },\n    {\n      \"title\": \"Examples\",\n      \"start_s\": 60,\n      \"end_s\": 150,\n      \"key_terms\": [\n        \"Neo4j\"\n      ]\n    }\n  ]\n}",
+  "notes": "claude-haiku-4-5, 6 frames, schema-mode (no audio)",
+  "latency_ms": 2620
+}

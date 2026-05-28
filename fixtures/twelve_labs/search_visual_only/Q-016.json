@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-016",
+  "answer": "Top matches:\n[112.0s\u2013115.0s] score=0.66 \u2014 slide with 'Neo4j' label visible",
+  "notes": "Marengo marengo3.0, visual-only (ablation) \u2014 Neptune (audio-only mention) lost",
+  "latency_ms": 540
+}

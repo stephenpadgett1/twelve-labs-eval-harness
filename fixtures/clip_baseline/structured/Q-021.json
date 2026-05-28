@@ -1,0 +1,6 @@
+{
+  "question_id": "Q-021",
+  "answer": "{\n  \"stages\": [\n    {\n      \"name\": \"mixing\",\n      \"start_s\": 0,\n      \"end_s\": 30\n    },\n    {\n      \"name\": \"kneading\",\n      \"start_s\": 30,\n      \"end_s\": 50\n    },\n    {\n      \"name\": \"rising\",\n      \"start_s\": 50,\n      \"end_s\": 90\n    },\n    {\n      \"name\": \"baking\",\n      \"start_s\": 90,\n      \"end_s\": 180\n    }\n  ]\n}",
+  "notes": "claude-haiku-4-5, 6 frames, schema-mode",
+  "latency_ms": 2740
+}

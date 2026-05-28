@@ -104,7 +104,15 @@ class Judge:
         return json.loads(match.group(0))
 
     def _fixture_score(self, question: Question, response: ModelResponse) -> JudgeScore:
-        path = self._fixtures_dir / f"{question.id}__{response.pipeline}.json"
+        # Ablation-aware fixture routing: if the response is from a visual-only
+        # Marengo run (notes carry the marker), prefer the __visual_only judge
+        # variant so the demo rollup reflects the audio-degradation pattern.
+        suffix = ""
+        if response.notes and "visual-only" in response.notes:
+            suffix = "__visual_only"
+        path = self._fixtures_dir / f"{question.id}__{response.pipeline}{suffix}.json"
+        if not path.exists() and suffix:
+            path = self._fixtures_dir / f"{question.id}__{response.pipeline}.json"
         if not path.exists():
             # Deterministic fallback: produce a plausible mid-range score so
             # the report renders even if a fixture is missing.

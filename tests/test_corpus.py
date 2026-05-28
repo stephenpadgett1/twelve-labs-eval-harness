@@ -13,22 +13,34 @@ def test_loads_six_videos():
     assert {v.use_case for v in videos} == {"product_demo", "sports_action", "lecture"}
 
 
-def test_loads_twenty_questions_referencing_real_videos():
+def test_loads_full_question_set_referencing_real_videos():
     videos = load_videos(ROOT / "corpus" / "videos.yaml")
     questions = load_questions(ROOT / "questions" / "questions.yaml", videos)
-    assert len(questions) == 20
+    assert len(questions) == 24
     video_ids = {v.id for v in videos}
     assert all(q.video_id in video_ids for q in questions)
 
 
-def test_question_kinds_mix_retrieval_and_reasoning():
+def test_question_kinds_include_retrieval_reasoning_structured():
     videos = load_videos(ROOT / "corpus" / "videos.yaml")
     questions = load_questions(ROOT / "questions" / "questions.yaml", videos)
     kinds = {q.kind for q in questions}
-    assert kinds == {"retrieval", "reasoning"}
-    # Reasonable balance — neither kind should be < 1/4 of the set.
+    assert kinds == {"retrieval", "reasoning", "structured"}
     n_retrieval = sum(1 for q in questions if q.kind == "retrieval")
-    assert 5 <= n_retrieval <= 15
+    n_reasoning = sum(1 for q in questions if q.kind == "reasoning")
+    n_structured = sum(1 for q in questions if q.kind == "structured")
+    assert n_retrieval >= 8
+    assert n_reasoning >= 4
+    assert n_structured >= 4
+
+
+def test_structured_questions_carry_a_schema():
+    videos = load_videos(ROOT / "corpus" / "videos.yaml")
+    questions = load_questions(ROOT / "questions" / "questions.yaml", videos)
+    for q in questions:
+        if q.kind == "structured":
+            assert q.schema_ is not None, f"{q.id} is structured but has no schema"
+            assert q.schema_.get("type") == "object"
 
 
 def test_unknown_video_id_in_questions_raises(tmp_path: Path):
