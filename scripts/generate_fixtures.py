@@ -37,7 +37,7 @@ DATA: list[dict] = [
             "[12.4s–14.6s] score=0.84\n"
             "[11.0s–12.0s] score=0.79"
         ),
-        "tl_notes": "Marengo marengo2.7, top-3 clips, visual+audio",
+        "tl_notes": "Marengo marengo3.0, top-3 clips, visual+audio",
         "tl_latency_ms": 480,
         "cb_answer": (
             "Top frames matching 'espresso pouring into cup':\n"
@@ -60,7 +60,7 @@ DATA: list[dict] = [
             "and the brew cycle is started; (4) espresso pours from the spouts into a "
             "single cup placed beneath. No milk or additional ingredients are added."
         ),
-        "tl_notes": "Pegasus pegasus1.2, full-video grounding",
+        "tl_notes": "Pegasus pegasus1.5, full-video grounding",
         "tl_latency_ms": 1840,
         "cb_answer": (
             "Frames sampled at 0s, 4s, 8s, 12s, 16s, 20s suggest a coffee-making "
@@ -78,7 +78,7 @@ DATA: list[dict] = [
         "qid": "Q-003",
         "kind": "retrieval",
         "tl_answer": "No clip matches above the 0.5 threshold. Returning zero results — the audio and visual signals do not contain a milk-pour event.",
-        "tl_notes": "Marengo marengo2.7, threshold=0.5",
+        "tl_notes": "Marengo marengo3.0, threshold=0.5",
         "tl_latency_ms": 410,
         "cb_answer": "No frames in the 1-fps sampled set show milk being added. Negative answer.",
         "cb_notes": "ViT-B-32/openai, 1 fps",
@@ -98,7 +98,7 @@ DATA: list[dict] = [
             "divided and formed into a loaf. (5) Baking — placed in a preheated "
             "oven; final shot shows the baked loaf."
         ),
-        "tl_notes": "Pegasus pegasus1.2",
+        "tl_notes": "Pegasus pegasus1.5",
         "tl_latency_ms": 2410,
         "cb_answer": (
             "Visible stages from sampled frames: ingredients in a bowl, hands "
@@ -121,7 +121,7 @@ DATA: list[dict] = [
             "[71.8s–74.0s] score=0.83\n"
             "[76.5s–80.0s] score=0.71"
         ),
-        "tl_notes": "Marengo marengo2.7, top-3",
+        "tl_notes": "Marengo marengo3.0, top-3",
         "tl_latency_ms": 520,
         "cb_answer": "Frames at 72s and 76s show dough near an oven door; 76s shows it entering. Best match: 76s.",
         "cb_notes": "ViT-B-32/openai, 1 fps",
@@ -137,7 +137,7 @@ DATA: list[dict] = [
             "[8.4s–11.2s] score=0.93  (packet emptied into bowl, possible yeast)\n"
             "[10.0s–12.0s] score=0.87"
         ),
-        "tl_notes": "Marengo marengo2.7, visual",
+        "tl_notes": "Marengo marengo3.0, visual",
         "tl_latency_ms": 470,
         "cb_answer": "Frame at 10s shows a small packet being emptied into the bowl. Best match: 10s.",
         "cb_notes": "ViT-B-32/openai, 1 fps",
@@ -153,7 +153,7 @@ DATA: list[dict] = [
             "compressed with a visible fade — i.e., the on-screen time is short but "
             "the depicted real-world duration is much longer (typically 45–90 min)."
         ),
-        "tl_notes": "Pegasus pegasus1.2",
+        "tl_notes": "Pegasus pegasus1.5",
         "tl_latency_ms": 2090,
         "cb_answer": (
             "Two of the sampled frames show the same covered bowl, suggesting a "
@@ -177,7 +177,7 @@ DATA: list[dict] = [
             "[24.1s–25.0s] score=0.89 (made)\n"
             "[31.6s–32.5s] score=0.87 (made)"
         ),
-        "tl_notes": "Marengo marengo2.7, audio+visual; ball-through-net concept",
+        "tl_notes": "Marengo marengo3.0, audio+visual; ball-through-net concept",
         "tl_latency_ms": 540,
         "cb_answer": (
             "Three frames clearly show ball-through-net at ~7s, ~24s, ~32s. The "
@@ -194,7 +194,7 @@ DATA: list[dict] = [
         "tl_answer": (
             "Top match: [18.4s–20.9s] score=0.86 (rim-only, no swish; categorized as miss)"
         ),
-        "tl_notes": "Marengo marengo2.7, 'missed free throw' concept",
+        "tl_notes": "Marengo marengo3.0, 'missed free throw' concept",
         "tl_latency_ms": 460,
         "cb_answer": "Frame at 19s shows the ball at the rim but doesn't clearly show whether it went in. Inferred miss based on no follow-on swish.",
         "cb_notes": "ViT-B-32/openai, 1 fps",
@@ -211,7 +211,7 @@ DATA: list[dict] = [
             "shooting elbow under the ball, follow-through with the wrist flexed "
             "forward. No hop or jump on release."
         ),
-        "tl_notes": "Pegasus pegasus1.2",
+        "tl_notes": "Pegasus pegasus1.5",
         "tl_latency_ms": 1980,
         "cb_answer": (
             "From the sampled frames, the shooter is upright with knees slightly "
@@ -235,7 +235,7 @@ DATA: list[dict] = [
             "[24.5s–27.6s] heelflip (landed)\n"
             "[38.4s–41.2s] 180 (landed)"
         ),
-        "tl_notes": "Marengo marengo2.7, skateboarding concept set",
+        "tl_notes": "Marengo marengo3.0, skateboarding concept set",
         "tl_latency_ms": 510,
         "cb_answer": (
             "From the sampled frames: a flat ground board pop (5s), a board "
@@ -251,7 +251,7 @@ DATA: list[dict] = [
         "qid": "Q-012",
         "kind": "retrieval",
         "tl_answer": "First clean landing: [3.2s–5.8s] — the ollie. Subsequent attempts include a kickflip bail before the next clean landing.",
-        "tl_notes": "Marengo marengo2.7",
+        "tl_notes": "Marengo marengo3.0",
         "tl_latency_ms": 440,
         "cb_answer": "First trick attempted (and the first that appears to be ridden out): ~5s, a board pop without rotation.",
         "cb_notes": "ViT-B-32/openai, 1 fps",
@@ -269,7 +269,7 @@ DATA: list[dict] = [
             "(adding body rotation). The arc adds a single new degree of "
             "difficulty per attempt."
         ),
-        "tl_notes": "Pegasus pegasus1.2",
+        "tl_notes": "Pegasus pegasus1.5",
         "tl_latency_ms": 2120,
         "cb_answer": (
             "From the sampled frames, the tricks appear to increase in complexity "
@@ -293,7 +293,7 @@ DATA: list[dict] = [
             "first-class edges, optimized for traversal'\n"
             "[64.0s–72.0s] score=0.71 — restates the definition more loosely"
         ),
-        "tl_notes": "Marengo marengo2.7, visual+audio (speech retrieval is the load-bearing signal here)",
+        "tl_notes": "Marengo marengo3.0, visual+audio (speech retrieval is the load-bearing signal here)",
         "tl_latency_ms": 690,
         "cb_answer": (
             "CLIP-only retrieval cannot directly retrieve speech content. Frames "
@@ -315,7 +315,7 @@ DATA: list[dict] = [
             "indexed for traversal, so multi-hop queries are constant-cost per "
             "step rather than join-cost."
         ),
-        "tl_notes": "Pegasus pegasus1.2",
+        "tl_notes": "Pegasus pegasus1.5",
         "tl_latency_ms": 2400,
         "cb_answer": (
             "From sampled frames showing slide text about 'joins' and "
@@ -336,7 +336,7 @@ DATA: list[dict] = [
             "[112.0s–119.0s] score=0.88 — 'Neo4j' named\n"
             "[141.0s–144.0s] score=0.74 — 'Neptune' referenced briefly"
         ),
-        "tl_notes": "Marengo marengo2.7, audio+visual",
+        "tl_notes": "Marengo marengo3.0, audio+visual",
         "tl_latency_ms": 510,
         "cb_answer": "Frames with the text 'Neo4j' appear at 112s and 118s; no clear frame mentions Neptune.",
         "cb_notes": "ViT-B-32/openai, 1 fps; no audio understanding",
@@ -355,7 +355,7 @@ DATA: list[dict] = [
             "(small fixture sets you iterate against), not from clever wording or "
             "magic phrases."
         ),
-        "tl_notes": "Pegasus pegasus1.2",
+        "tl_notes": "Pegasus pegasus1.5",
         "tl_latency_ms": 2310,
         "cb_answer": (
             "Based on sampled slide text mentioning 'structure', 'eval', and "
@@ -376,7 +376,7 @@ DATA: list[dict] = [
             "a structural technique, with explicit pushback against treating it "
             "as a magic phrase"
         ),
-        "tl_notes": "Marengo marengo2.7, audio+visual",
+        "tl_notes": "Marengo marengo3.0, audio+visual",
         "tl_latency_ms": 530,
         "cb_answer": "Frames with the on-screen text 'CoT' appear briefly around 180s.",
         "cb_notes": "ViT-B-32/openai, 1 fps",
@@ -392,7 +392,7 @@ DATA: list[dict] = [
             "eval set first, even a small one (5-10 fixtures), before iterating "
             "on the prompt itself"
         ),
-        "tl_notes": "Marengo marengo2.7",
+        "tl_notes": "Marengo marengo3.0",
         "tl_latency_ms": 500,
         "cb_answer": "Slide text near the end of the talk mentions 'evals first.' Best frame: 250s.",
         "cb_notes": "ViT-B-32/openai, 1 fps",
@@ -411,7 +411,7 @@ DATA: list[dict] = [
             "with a mediocre prompt on hard tasks, but for easy tasks the small "
             "model is sufficient and cheaper."
         ),
-        "tl_notes": "Pegasus pegasus1.2",
+        "tl_notes": "Pegasus pegasus1.5",
         "tl_latency_ms": 2440,
         "cb_answer": (
             "The talk seems to argue that model choice and prompt design are "

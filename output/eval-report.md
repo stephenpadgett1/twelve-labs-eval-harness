@@ -41,7 +41,7 @@ Top matches:
 [11.0s–12.0s] score=0.79
 
 _judge:_ Pinpoints the pour at 10.8–13.2s with high confidence — matches the reference and is specific to the second.
-_notes: Marengo marengo2.7, top-3 clips, visual+audio_
+_notes: Marengo marengo3.0, top-3 clips, visual+audio_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 220 ms)
 
@@ -66,7 +66,7 @@ _notes: ViT-B-32/openai, 1 fps frame sampling, top-3 frames_
 The clip shows espresso preparation in four steps: (1) a grinder is activated and ground coffee is collected; (2) the portafilter is filled and tamped flat; (3) the portafilter is locked into the espresso machine and the brew cycle is started; (4) espresso pours from the spouts into a single cup placed beneath. No milk or additional ingredients are added.
 
 _judge:_ Full step sequence with correct ordering; the 'no milk' note is correct but the step labels are slightly generic vs the reference's precise vocabulary.
-_notes: Pegasus pegasus1.2, full-video grounding_
+_notes: Pegasus pegasus1.5, full-video grounding_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 2300 ms)
 
@@ -88,7 +88,7 @@ _notes: claude-haiku-4-5, 6 evenly-sampled frames_
 No clip matches above the 0.5 threshold. Returning zero results — the audio and visual signals do not contain a milk-pour event.
 
 _judge:_ Correctly returns a negative result with confidence; explicit about the threshold.
-_notes: Marengo marengo2.7, threshold=0.5_
+_notes: Marengo marengo3.0, threshold=0.5_
 
 **CLIP baseline** (relevance 5/5 · faithfulness 5/5 · specificity 4/5 · 190 ms)
 
@@ -110,7 +110,7 @@ _notes: ViT-B-32/openai, 1 fps_
 Five major stages: (1) Mixing — flour, water, salt, and visibly yeast combined in a bowl. (2) Kneading — extended, hands-on. (3) Proofing — covered bowl, time-compressed cut showing rise. (4) Shaping — dough divided and formed into a loaf. (5) Baking — placed in a preheated oven; final shot shows the baked loaf.
 
 _judge:_ All five stages with the right ordering; correctly identifies yeast as a discrete ingredient.
-_notes: Pegasus pegasus1.2_
+_notes: Pegasus pegasus1.5_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 2920 ms)
 
@@ -135,7 +135,7 @@ Top matches:
 [76.5s–80.0s] score=0.71
 
 _judge:_ Clip range 74–76.5s aligns with the reference window of 70–80s, with sub-second precision.
-_notes: Marengo marengo2.7, top-3_
+_notes: Marengo marengo3.0, top-3_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 5/5 · specificity 3/5 · 230 ms)
 
@@ -159,7 +159,7 @@ Top matches:
 [10.0s–12.0s] score=0.87
 
 _judge:_ Identifies the moment with a clip range but hedges with 'possible yeast' — fair, since packet content isn't visually distinguishable; faithful to what's actually visible.
-_notes: Marengo marengo2.7, visual_
+_notes: Marengo marengo3.0, visual_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 200 ms)
 
@@ -181,7 +181,7 @@ _notes: ViT-B-32/openai, 1 fps_
 Proofing is shown as a short ~6-second segment around 42–48 seconds, compressed with a visible fade — i.e., the on-screen time is short but the depicted real-world duration is much longer (typically 45–90 min).
 
 _judge:_ Specific timestamp window with an inferred real-world duration; the inference is reasonable but introduces a number not directly shown.
-_notes: Pegasus pegasus1.2_
+_notes: Pegasus pegasus1.5_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 2150 ms)
 
@@ -207,7 +207,7 @@ Detected ball-through-net events: 3.
 [31.6s–32.5s] score=0.87 (made)
 
 _judge:_ Counts three makes, flags the second attempt as a miss with a low score — fully matches reference.
-_notes: Marengo marengo2.7, audio+visual; ball-through-net concept_
+_notes: Marengo marengo3.0, audio+visual; ball-through-net concept_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 240 ms)
 
@@ -229,7 +229,7 @@ _notes: ViT-B-32/openai, 1 fps_
 Top match: [18.4s–20.9s] score=0.86 (rim-only, no swish; categorized as miss)
 
 _judge:_ Pinpoints the miss at 18.4–20.9s; matches the reference window.
-_notes: Marengo marengo2.7, 'missed free throw' concept_
+_notes: Marengo marengo3.0, 'missed free throw' concept_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 210 ms)
 
@@ -251,7 +251,7 @@ _notes: ViT-B-32/openai, 1 fps_
 On the first attempt the shooter exhibits standard set form: feet shoulder-width apart, knees bent for a small dip, ball cocked with the shooting elbow under the ball, follow-through with the wrist flexed forward. No hop or jump on release.
 
 _judge:_ Detailed form description matches reference for the elements visible; some details (elbow alignment from this camera angle) may be slightly over-claimed.
-_notes: Pegasus pegasus1.2_
+_notes: Pegasus pegasus1.5_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 2060 ms)
 
@@ -277,7 +277,7 @@ Trick attempts detected: 4.
 [38.4s–41.2s] 180 (landed)
 
 _judge:_ All four tricks named correctly with timestamp ranges and outcomes.
-_notes: Marengo marengo2.7, skateboarding concept set_
+_notes: Marengo marengo3.0, skateboarding concept set_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 2/5 · 250 ms)
 
@@ -299,7 +299,7 @@ _notes: ViT-B-32/openai, 1 fps_
 First clean landing: [3.2s–5.8s] — the ollie. Subsequent attempts include a kickflip bail before the next clean landing.
 
 _judge:_ Names the ollie explicitly and times it; matches reference exactly.
-_notes: Marengo marengo2.7_
+_notes: Marengo marengo3.0_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 180 ms)
 
@@ -321,7 +321,7 @@ _notes: ViT-B-32/openai, 1 fps_
 Yes — there is a clear escalation. The clip opens with an ollie (simplest flat-ground trick), moves to a kickflip and heelflip (adding board rotation on different sides), and ends on a 180 (adding body rotation). The arc adds a single new degree of difficulty per attempt.
 
 _judge:_ Names each trick and articulates the dimension being added at each step.
-_notes: Pegasus pegasus1.2_
+_notes: Pegasus pegasus1.5_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 2080 ms)
 
@@ -345,7 +345,7 @@ Top matches:
 [64.0s–72.0s] score=0.71 — restates the definition more loosely
 
 _judge:_ Returns the exact definition with a clip range; uses both audio and visual signals as expected.
-_notes: Marengo marengo2.7, visual+audio (speech retrieval is the load-bearing signal here)_
+_notes: Marengo marengo3.0, visual+audio (speech retrieval is the load-bearing signal here)_
 
 **CLIP baseline** (relevance 2/5 · faithfulness 4/5 · specificity 2/5 · 280 ms)
 
@@ -367,7 +367,7 @@ _notes: ViT-B-32/openai, 1 fps; CLIP does not transcribe speech_
 The speaker argues that many-to-many relationship traversal across multiple hops is expensive in relational tables because each hop requires a join. Graph databases store edges as first-class objects indexed for traversal, so multi-hop queries are constant-cost per step rather than join-cost.
 
 _judge:_ Captures the multi-hop join cost argument exactly.
-_notes: Pegasus pegasus1.2_
+_notes: Pegasus pegasus1.5_
 
 **CLIP baseline** (relevance 3/5 · faithfulness 4/5 · specificity 2/5 · 2330 ms)
 
@@ -391,7 +391,7 @@ Top matches:
 [141.0s–144.0s] score=0.74 — 'Neptune' referenced briefly
 
 _judge:_ Both products named with timestamps; matches reference exactly.
-_notes: Marengo marengo2.7, audio+visual_
+_notes: Marengo marengo3.0, audio+visual_
 
 **CLIP baseline** (relevance 3/5 · faithfulness 4/5 · specificity 3/5 · 220 ms)
 
@@ -413,7 +413,7 @@ _notes: ViT-B-32/openai, 1 fps; no audio understanding_
 The speaker argues that most production prompt-engineering value comes from structure (clear input/output contracts) and evaluation (small fixture sets you iterate against), not from clever wording or magic phrases.
 
 _judge:_ Captures the main argument in one sentence as the reference does.
-_notes: Pegasus pegasus1.2_
+_notes: Pegasus pegasus1.5_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 5/5 · specificity 3/5 · 2250 ms)
 
@@ -436,7 +436,7 @@ Top matches:
 [178.0s–192.0s] score=0.84 — 'chain-of-thought' discussed briefly as a structural technique, with explicit pushback against treating it as a magic phrase
 
 _judge:_ Yes with full context and explicit framing; very lightly extrapolated from a brief mention.
-_notes: Marengo marengo2.7, audio+visual_
+_notes: Marengo marengo3.0, audio+visual_
 
 **CLIP baseline** (relevance 3/5 · faithfulness 4/5 · specificity 2/5 · 210 ms)
 
@@ -458,7 +458,7 @@ _notes: ViT-B-32/openai, 1 fps_
 Top match: [245.0s–266.0s] score=0.91 — speaker recommends adding an eval set first, even a small one (5-10 fixtures), before iterating on the prompt itself
 
 _judge:_ Names the recommendation and includes the speaker's '5-10 fixtures' qualifier.
-_notes: Marengo marengo2.7_
+_notes: Marengo marengo3.0_
 
 **CLIP baseline** (relevance 4/5 · faithfulness 4/5 · specificity 3/5 · 200 ms)
 
@@ -480,7 +480,7 @@ _notes: ViT-B-32/openai, 1 fps_
 The speaker frames model choice as setting the ceiling and prompt design as the work of getting close to it. The implication is that picking the right model tier matters more than perfecting wording — a small fast model with a great prompt will not beat a large model with a mediocre prompt on hard tasks, but for easy tasks the small model is sufficient and cheaper.
 
 _judge:_ Full reasoning with the ceiling analogy and cost implication; the cost-tradeoff sentence is the model's framing, not a verbatim quote.
-_notes: Pegasus pegasus1.2_
+_notes: Pegasus pegasus1.5_
 
 **CLIP baseline** (relevance 3/5 · faithfulness 4/5 · specificity 2/5 · 2210 ms)
 

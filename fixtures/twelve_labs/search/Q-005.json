@@ -1,6 +1,6 @@
 {
   "question_id": "Q-005",
   "answer": "Top matches:\n[74.0s\u201376.5s] score=0.88\n[71.8s\u201374.0s] score=0.83\n[76.5s\u201380.0s] score=0.71",
-  "notes": "Marengo marengo2.7, top-3",
+  "notes": "Marengo marengo3.0, top-3",
   "latency_ms": 520
 }

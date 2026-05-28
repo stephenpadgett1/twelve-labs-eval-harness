@@ -1,6 +1,6 @@
 {
   "question_id": "Q-020",
   "answer": "The speaker frames model choice as setting the ceiling and prompt design as the work of getting close to it. The implication is that picking the right model tier matters more than perfecting wording \u2014 a small fast model with a great prompt will not beat a large model with a mediocre prompt on hard tasks, but for easy tasks the small model is sufficient and cheaper.",
-  "notes": "Pegasus pegasus1.2",
+  "notes": "Pegasus pegasus1.5",
   "latency_ms": 2440
 }

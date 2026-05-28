@@ -1,6 +1,6 @@
 {
   "question_id": "Q-019",
   "answer": "Top match: [245.0s\u2013266.0s] score=0.91 \u2014 speaker recommends adding an eval set first, even a small one (5-10 fixtures), before iterating on the prompt itself",
-  "notes": "Marengo marengo2.7",
+  "notes": "Marengo marengo3.0",
   "latency_ms": 500
 }

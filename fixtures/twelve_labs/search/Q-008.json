@@ -1,6 +1,6 @@
 {
   "question_id": "Q-008",
   "answer": "Detected ball-through-net events: 3.\n[6.2s\u20137.4s] score=0.92 (made)\n[19.8s\u201320.6s] score=0.34 (miss \u2014 rim only)\n[24.1s\u201325.0s] score=0.89 (made)\n[31.6s\u201332.5s] score=0.87 (made)",
-  "notes": "Marengo marengo2.7, audio+visual; ball-through-net concept",
+  "notes": "Marengo marengo3.0, audio+visual; ball-through-net concept",
   "latency_ms": 540
 }

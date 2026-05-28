@@ -32,8 +32,8 @@ class TwelveLabsClient:
         self,
         *,
         api_key: str | None = None,
-        marengo_engine: str = "marengo2.7",
-        pegasus_engine: str = "pegasus1.2",
+        marengo_engine: str = "marengo3.0",
+        pegasus_engine: str = "pegasus1.5",
         fixtures_dir: Path = FIXTURES_ROOT,
     ) -> None:
         self._api_key = api_key or os.getenv("TWELVE_LABS_API_KEY")

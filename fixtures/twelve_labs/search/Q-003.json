@@ -1,6 +1,6 @@
 {
   "question_id": "Q-003",
   "answer": "No clip matches above the 0.5 threshold. Returning zero results \u2014 the audio and visual signals do not contain a milk-pour event.",
-  "notes": "Marengo marengo2.7, threshold=0.5",
+  "notes": "Marengo marengo3.0, threshold=0.5",
   "latency_ms": 410
 }

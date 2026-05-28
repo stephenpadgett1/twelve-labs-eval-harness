@@ -1,6 +1,6 @@
 {
   "question_id": "Q-017",
   "answer": "The speaker argues that most production prompt-engineering value comes from structure (clear input/output contracts) and evaluation (small fixture sets you iterate against), not from clever wording or magic phrases.",
-  "notes": "Pegasus pegasus1.2",
+  "notes": "Pegasus pegasus1.5",
   "latency_ms": 2310
 }
