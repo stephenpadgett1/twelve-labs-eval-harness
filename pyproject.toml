@@ -1,5 +1,5 @@
 [project]
-name = "twelve-labs-eval-harness"
+name = "video-understanding-eval-harness"
 version = "0.1.0"
 description = "Side-by-side eval harness for video-understanding models: Twelve Labs (Marengo + Pegasus) vs an open-source CLIP-plus-frame-sampled-LLM baseline. With an LLM-as-judge."
 readme = "README.md"
