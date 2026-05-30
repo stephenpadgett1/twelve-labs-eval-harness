@@ -35,7 +35,7 @@ Corpus: **demo** · 6 videos · 24 questions · ablation: **visual_only**
 | Twelve Labs | $0.7926 | $0.0330 |
 | CLIP baseline | $0.0918 | $0.0077 |
 
-_Costs are derived from posted pricing pages (TwelveLabs index $0.042/min + Pegasus analyze $0.0292/min; Anthropic Haiku 4.5 $0.80/MT input + $4/MT output) and represent per-call estimates — not your actual bill. Marengo indexing is amortized across 10 queries per video (see `INDEX_AMORTIZE_QUERIES`); change that constant to reflect your customer's real query/index ratio. See the README "Cost estimates" section for the segment-billing footgun this surfaces._
+_Costs are derived from posted pricing pages (TwelveLabs index $0.042/min + Pegasus analyze $0.0292/min; Anthropic Haiku 4.5 $0.80/MT input + $4/MT output) and represent per-call estimates — not your actual bill. Marengo indexing is amortized across 10 queries per video (see `INDEX_AMORTIZE_QUERIES`); change that constant to reflect your customer's real query/index ratio. See the README "Cost estimates" section for the segment-billing pitfall this surfaces._
 
 ## Per-question detail
 

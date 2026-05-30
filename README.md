@@ -5,7 +5,7 @@ A side-by-side eval harness for video-understanding models, tracking the current
 - **Twelve Labs** — Marengo 3.0 (retrieval) + Pegasus 1.5 (reasoning) + **Pegasus 1.5 Time-Based Metadata** (structured extraction)
 - **Open-source baseline** — CLIP (retrieval) + frame-sampled Claude (reasoning + schema-mode structured extraction)
 - **LLM-as-judge** — Claude Sonnet 4.6 scoring each pipeline's response on relevance, faithfulness, and specificity (1–5)
-- **Cost-aware scoring** — illustrative $/call estimates from posted pricing pages, surfacing the segment-billing footgun customers hit
+- **Cost-aware scoring** — illustrative $/call estimates from posted pricing pages, surfacing the segment-billing pitfall customers hit
 - **Audio-modality ablation** — `--ablation visual_only` measures Marengo's audio contribution on speech-heavy queries
 
 Built as a Solutions-Architect reference scaffold — the kind of artifact you'd hand a strategic customer in week two to anchor an honest model evaluation, not a benchmark exercise.
@@ -14,8 +14,8 @@ Built as a Solutions-Architect reference scaffold — the kind of artifact you'd
 
 Most "Twelve Labs vs X" content on the internet is either marketing collateral or a single notebook with no real eval. This harness is a small, opinionated reference for *how* to evaluate video models for a real customer use case:
 
-- A real corpus (yours, not mine — placeholder URLs ship in `corpus/videos.yaml`)
-- A real question set (`questions/questions.yaml`) with **expected answers** so the judge has a reference, not vibes
+- A real corpus (bring your own — placeholder URLs ship in `corpus/videos.yaml`)
+- A real question set (`questions/questions.yaml`) with **expected answers** so the judge has a reference, not guesswork
 - A real LLM judge with a strict-JSON contract
 - A side-by-side report you can put in front of a non-technical stakeholder
 
@@ -127,7 +127,7 @@ The report renders an illustrative `$/call` column and a per-pipeline `$/run` ro
 - **TwelveLabs:** Marengo indexing $0.042/min video (one-time, amortized over `INDEX_AMORTIZE_QUERIES = 10` queries by default); Pegasus analyze $0.0292/min video per call.
 - **CLIP baseline:** CLIP encoding is local ($0 OPEX). Claude Haiku 4.5 inputs $0.80/MT, outputs $4/MT — six 1024×768 frames per reasoning call ≈ 8,200 input tokens.
 
-**The segment-billing footgun.** TwelveLabs bills indexing per minute of video × number of segment definitions. A 1-hour video with 4 segment definitions = 240 indexed minutes, not 60. A common customer-onboarding mistake is to define a separate segment per "concept" up-front; do that on a 50,000-hour archive and the indexing bill goes 4× the back-of-envelope. The eval surfaces this — tune `INDEX_AMORTIZE_QUERIES` in `twelve_labs.py` to your customer's real query-to-index ratio before quoting.
+**The segment-billing pitfall.** TwelveLabs bills indexing per minute of video × number of segment definitions. A 1-hour video with 4 segment definitions = 240 indexed minutes, not 60. A common customer-onboarding mistake is to define a separate segment per "concept" up-front; do that on a 50,000-hour archive and the indexing bill goes 4× the back-of-envelope. The eval surfaces this — tune `INDEX_AMORTIZE_QUERIES` in `twelve_labs.py` to your customer's real query-to-index ratio before quoting.
 
 ## What the report looks like
 
@@ -165,7 +165,7 @@ Cost rollup makes the trade-off explicit:
 This is a portfolio artifact, not a benchmark. Specifically:
 
 - **Videos are placeholder.** The corpus YAML ships with `<replace-with-real-video-url>` markers. The fixtures simulate what each pipeline *would* return on representative short videos of those use-case shapes.
-- **The fixture answers were hand-written**, calibrated against my read of Marengo 3.0 / Pegasus 1.5 / CLIP behavior on similar video types. They are *illustrative*, not measured.
+- **The fixture answers were hand-written**, calibrated against observed Marengo 3.0 / Pegasus 1.5 / CLIP behavior on similar video types. They are *illustrative*, not measured.
 - **The 4.88 vs 3.50 gap in the demo rollup is not a benchmark claim about Twelve Labs.** It reflects the realistic structural advantage Twelve Labs has on speech-heavy content (lecture videos — pure-CLIP retrieval has no audio), Pegasus's specificity edge over frame-sampled multimodal prompting, and the Time-Based Metadata advantage on schema-conformant temporal extraction (where Pegasus 1.5 produces video-native boundaries vs Claude reading 6 sampled frames).
 - **The audio-ablation delta (4.88 → 4.51 overall, 4.89 → 4.17 on retrieval) is the fixture's modeled estimate** of Marengo 3.0's native-audio contribution on speech-heavy queries. TwelveLabs' own reported MSR-VTT audio benchmark gap vs Nova (73.2% vs 36.7%) is the directional reason this should hold in live runs, but treat the magnitude here as illustrative, not measured.
 - **Cost estimates are illustrative.** They come from posted public pricing as of 2026-05-28, ignore volume discounts, and amortize Marengo indexing across 10 queries per video (`INDEX_AMORTIZE_QUERIES`). Real customer bills depend on actual query/index ratio and any negotiated rates.
@@ -177,7 +177,7 @@ The intended workflow when scoping a real customer engagement:
 
 1. Replace `corpus/videos.yaml` with 5–10 *of the customer's* videos (or close analogues).
 2. Replace `questions/questions.yaml` with the question shapes the customer cares about — retrieval for "find me where X happened," reasoning for "summarize what changed."
-3. Add a reference answer per question. This is the work that matters; without it the eval is vibes.
+3. Add a reference answer per question. This is the work that matters; without it the eval is guesswork.
 4. Run live. Read the per-question detail, not just the rollup.
 5. Use the report as the shared artifact in the next customer review.
 

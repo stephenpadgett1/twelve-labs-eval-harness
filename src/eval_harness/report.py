@@ -68,7 +68,7 @@ def render(report: EvalReport) -> str:
         "indexing is amortized across 10 queries per video (see "
         "`INDEX_AMORTIZE_QUERIES`); change that constant to reflect your customer's "
         "real query/index ratio. See the README \"Cost estimates\" section for the "
-        "segment-billing footgun this surfaces._"
+        "segment-billing pitfall this surfaces._"
     )
     lines.append("")
 
